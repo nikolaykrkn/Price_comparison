@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+
+{% block content %}
+
+<table class="table table-striped">
+	<tr><th>Product</th><th>Price</th><th>Pro Direct Running price</th><th>Wiggle price</th><th>Active in Style price</th></tr>
+	{% for row in Rows %}
+
+	<tr>
+		<td>{{ row.Product }}</td>
+		<td>{{ row.product_price }}</td>
+		<td style="background: {{ row.Pro_Direct_Running_color }}" > {{ row.Pro_Direct_Running_price }}</td>
+		<td style="background: {{ row.Wiggle_color }}" > {{ row.Wiggle_price }}</td>
+		<td style="background: {{ row.Active_in_Style_color }}" > {{ row.Active_in_Style_price }}</td>
+	</tr>
+
+	{% endfor %}
+
+</table>
+
+{% endblock %}

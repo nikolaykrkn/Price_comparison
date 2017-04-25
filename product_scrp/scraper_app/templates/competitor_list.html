@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<table class="table table-striped">
+	<tr><th>Name</th><th>Brand</th><th>Color</th><th>Price</th></tr>
+	{% for competitor in competitor_list %}
+
+	<tr>
+		<td>{{competitor}}</td>
+		<td>{{ competitor.brand }}</td>
+		<td>{{ competitor.color }}</td>
+		<td>{{ competitor.price }}</td>
+	</tr>
+
+	{% endfor %}
+
+</table>
+
+
+{% endblock %}

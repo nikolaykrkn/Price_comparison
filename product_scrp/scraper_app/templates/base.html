@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Product Compare</title>
+	{# Load the tag library #}
+	{% load bootstrap3 %}
+
+	{# Load CSS and JavaScript #}
+	{% bootstrap_css %}
+	{% bootstrap_javascript %}
+
+	{# Display django.contrib.messages as Bootstrap alerts #}
+	{% bootstrap_messages %}
+</head>
+<body>
+    
+    {% block header %}
+	<header>
+		<nav class="navbar navbar-inverse">
+		  <div class="container-fluid">
+
+			<ul class="nav navbar-nav">
+			  <li><a href="{% url 'index_URL' %}"> Home </a></li>
+			  <li><a href="{% url 'product_list_URL' %}"> List of Products </a></li>
+			  <li><a href="{% url 'competitor_list_URL' %}"> List of Competitors </a></li>
+          	  <li><a href="{% url 'add_product_URL' %}"> Add Product </a></li>
+			  <li><a href="{% url 'add_competitor_URL' %}"> Add Competitor </a></li>
+			  <li><a href="{% url 'update_URL' %}"> Update </a></li>
+			  <li><a href="{% url 'compare_URL' %}"> Compare </a></li>
+			  
+			  
+			  
+			</ul>
+		  </div>
+		</nav>
+	</header>
+	{% endblock %}
+	<div class="container-fluid">
+    {% block content %}
+
+	<div class="jumbotron"><h1>Welcome!</h1></div>
+	
+    {% endblock %}
+	</div>
+	
+	{% block footer %}
+	<footer>
+	
+
+	
+	</footer>
+	{% endblock %}
+
+
+</body>
+</html>
