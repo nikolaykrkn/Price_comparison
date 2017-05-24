@@ -44,8 +44,14 @@ class addCompetitor(CreateView):
 def UpdatePrices(request):
 	if request.method == 'POST':
 		for comp in Competitor.objects.all():
-			comp.price = get_price(comp.site)
+			pr = get_price(comp.site)
+			comp.price = pr
 			comp.save()
+		for prd in Product.objects.all():
+			pr = get_price(prd.url)
+			prd.price = pr
+			prd.save()
+			
 		print('Prices scraped')
 		return render(request, 'update.html')
 	return render(request, 'update.html')
@@ -66,10 +72,10 @@ def ComparePrices(request):
 				prc = 'Mining not attempted'
 			else:
 				prc = compr.price
-				color = 'rgba(200, 0, 0, 0.3)' if compr.price > Prod.price else 'rgba(0, 200, 0, 0.3)'
+				color = 'rgba(200, 0, 0, 0.3)' if compr.price < Prod.price else 'rgba(0, 200, 0, 0.3)'
 				
-			rowdict[compr.vendor.replace(' ', '_') + '_price'] = prc
-			rowdict[compr.vendor.replace(' ', '_') + '_color'] = color
+			rowdict[''.join(compr.vendor.split()).lower() + '_price'] = prc
+			rowdict[''.join(compr.vendor.split()).lower() + '_color'] = color
 
 		rows.append(rowdict)
 	

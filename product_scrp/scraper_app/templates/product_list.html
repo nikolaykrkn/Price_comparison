@@ -3,7 +3,7 @@
 {% block content %}
 
 <table class="table table-striped">
-	<tr><th>Name</th><th>Brand</th><th>Color</th><th>Price</th></tr>
+	<tr><th>Name</th><th>Brand</th><th>Color</th><th>Price</th><th>Links</th></tr>
 	{% for product in product_list %}
 
 	<tr>
@@ -11,6 +11,7 @@
 		<td>{{ product.brand }}</td>
 		<td>{{ product.color }}</td>
 		<td>{{ product.price }}</td>
+		<td><a href="{{ product.url }}"  target="_blank">link</a></td>
 	</tr>
 
 	{% endfor %}

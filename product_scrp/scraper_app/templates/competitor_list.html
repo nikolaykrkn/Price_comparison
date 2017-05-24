@@ -3,7 +3,7 @@
 {% block content %}
 
 <table class="table table-striped">
-	<tr><th>Name</th><th>Brand</th><th>Color</th><th>Price</th></tr>
+	<tr><th>Name</th><th>Brand</th><th>Color</th><th>Price</th><th>Links</th></tr>
 	{% for competitor in competitor_list %}
 
 	<tr>
@@ -11,6 +11,7 @@
 		<td>{{ competitor.brand }}</td>
 		<td>{{ competitor.color }}</td>
 		<td>{{ competitor.price }}</td>
+		<td><a href="{{ competitor.site }}" target="_blank">link</a></td>
 	</tr>
 
 	{% endfor %}

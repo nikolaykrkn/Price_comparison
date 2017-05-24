@@ -25,12 +25,13 @@ def get_price(URL):
 			if error_count < 5:
 				return -2.0
 
-	if "www.prodirectrunning.com" in URL or "www.wiggle.co.uk" in URL:
+	if "prodirectrunning.com" in URL or "wiggle.co.uk" in URL:
 		return soup.select("[itemprop='price']")[0].text
-	elif "www.activeinstyle.com" in URL:
-		return str(soup.select("[itemprop='price']")[0]).split('meta content="', 1)[1].split('"', 1)[0]
+	elif "www.activeinstyle.com" in URL or "thesportsedit.com" in URL or "hipandhealthy.com" in URL or "yogarebel.com" in URL:
+		prc_tags = soup.find(attrs={'itemprop':'price'})
+		return prc_tags['content']
 
 if __name__ == "__main__":
-	URL = "http://www.prodirectrunning.com/products/2XU-Compression-Long-Sleeve-Top-Black-Silver-X-Mens-Base-Layer-MA2308aBlack-Silver-X-147587.aspx?spr=1"
+	URL = "https://thesportsedit.com/products/2xu-compression-long-sleeves-top"
 	p = get_price(URL)
 	print(p)
