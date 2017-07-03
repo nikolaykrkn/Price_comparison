@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Product(models.Model):
 	brand = models.CharField('Brand Name', max_length=200, blank=True)
 	#gtin = models.CharField('GTIN code', max_length=200, blank=True)

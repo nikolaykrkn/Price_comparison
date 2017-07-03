@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from scraper_app.models import Product, Competitor
-
+from readprd import readxls
 
 
 from django.shortcuts import render, redirect
@@ -16,6 +16,24 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 
 from prices import get_price
+
+# Imaginary function to handle an uploaded file.
+#from somewhere import handle_uploaded_file
+
+class UploadFileForm(forms.Form):
+    file  = forms.FileField()
+
+
+def upload_file(request):
+    if request.method == 'POST':
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            readxls(request.FILES['file'].read())
+            return render(request, 'upload.html')
+    else:
+        form = UploadFileForm()
+    return render(request, 'upload.html', {'form': form})
+
 
 
 def index(request):
@@ -40,6 +58,7 @@ class addCompetitor(CreateView):
 	fields = '__all__'
 	template_name = 'add_product.html'
 	success_url = reverse_lazy('index_URL')
+
 
 def UpdatePrices(request):
 	if request.method == 'POST':

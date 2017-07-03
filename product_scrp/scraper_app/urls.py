@@ -10,4 +10,5 @@ urlpatterns = [
 	url(r'^list-competitor/$', views.viewCompetitor.as_view(), name='competitor_list_URL'),
 	url(r'^update/$', views.UpdatePrices, name='update_URL'),
 	url(r'^compare/$', views.ComparePrices, name='compare_URL'),
+	url(r'^upload/$', views.upload_file, name='upload'),
 ]
